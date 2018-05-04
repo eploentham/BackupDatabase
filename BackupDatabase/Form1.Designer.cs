@@ -62,7 +62,7 @@
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnStart.Location = new System.Drawing.Point(84, 73);
+            this.btnStart.Location = new System.Drawing.Point(96, 81);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(205, 46);
             this.btnStart.TabIndex = 7;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(697, 220);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtAutoStart);
             this.Controls.Add(this.btnStart);
@@ -162,7 +162,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtTimeStart;
         private System.Windows.Forms.MaskedTextBox txtTimeCurrent;
-        
     }
 }
 

@@ -8,7 +8,7 @@ namespace BackupDatabase
 {
     public class InitConfig
     {
-        public String hostDB = "", userDB = "", passDB = "", nameDB = "", portDB = "";
+        public String hostDB = "", userDB = "", passDB = "", nameDB = "", portDB = "", pathBackupDatabase="";
         
     }
 }
