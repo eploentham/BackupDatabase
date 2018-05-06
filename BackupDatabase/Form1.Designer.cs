@@ -37,6 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimeStart = new System.Windows.Forms.MaskedTextBox();
             this.txtTimeCurrent = new System.Windows.Forms.MaskedTextBox();
+            this.chkBackup1 = new System.Windows.Forms.CheckBox();
+            this.chkBackup2 = new System.Windows.Forms.CheckBox();
+            this.chkBackup3 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label9
@@ -128,11 +131,46 @@
             this.txtTimeCurrent.TabIndex = 10;
             this.txtTimeCurrent.ValidatingType = typeof(System.DateTime);
             // 
+            // chkBackup1
+            // 
+            this.chkBackup1.AutoSize = true;
+            this.chkBackup1.Checked = true;
+            this.chkBackup1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkBackup1.Location = new System.Drawing.Point(24, 58);
+            this.chkBackup1.Name = "chkBackup1";
+            this.chkBackup1.Size = new System.Drawing.Size(118, 17);
+            this.chkBackup1.TabIndex = 16;
+            this.chkBackup1.Text = "Backup Database1";
+            this.chkBackup1.UseVisualStyleBackColor = true;
+            // 
+            // chkBackup2
+            // 
+            this.chkBackup2.AutoSize = true;
+            this.chkBackup2.Location = new System.Drawing.Point(149, 58);
+            this.chkBackup2.Name = "chkBackup2";
+            this.chkBackup2.Size = new System.Drawing.Size(118, 17);
+            this.chkBackup2.TabIndex = 17;
+            this.chkBackup2.Text = "Backup Database2";
+            this.chkBackup2.UseVisualStyleBackColor = true;
+            // 
+            // chkBackup3
+            // 
+            this.chkBackup3.AutoSize = true;
+            this.chkBackup3.Location = new System.Drawing.Point(284, 58);
+            this.chkBackup3.Name = "chkBackup3";
+            this.chkBackup3.Size = new System.Drawing.Size(118, 17);
+            this.chkBackup3.TabIndex = 18;
+            this.chkBackup3.Text = "Backup Database3";
+            this.chkBackup3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 220);
+            this.Controls.Add(this.chkBackup3);
+            this.Controls.Add(this.chkBackup2);
+            this.Controls.Add(this.chkBackup1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtAutoStart);
             this.Controls.Add(this.btnStart);
@@ -162,6 +200,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtTimeStart;
         private System.Windows.Forms.MaskedTextBox txtTimeCurrent;
+        private System.Windows.Forms.CheckBox chkBackup1;
+        private System.Windows.Forms.CheckBox chkBackup2;
+        private System.Windows.Forms.CheckBox chkBackup3;
     }
 }
 
