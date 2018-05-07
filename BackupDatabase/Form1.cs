@@ -65,6 +65,7 @@ namespace BackupDatabase
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
             timer1.Interval = 1000 * 60;
             timer1.Start();
+            this.Text = "Last Update ";
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
