@@ -60,12 +60,15 @@ namespace BackupDatabase
             iniC.userDB3 = iniF.Read("userDB3");
 
             iniC.pathBackupDatabase = iniF.Read("pathBackupDatabase");
+            iniC.startBackupTime = iniF.Read("startBackupTime");
+
+            txtAutoStart.Text = iniC.startBackupTime;
 
             timer1 = new Timer();
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
             timer1.Interval = 1000 * 60;
             timer1.Start();
-            this.Text = "Last Update ";
+            this.Text = "Last Update 2018-05-07";
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -321,7 +324,7 @@ namespace BackupDatabase
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            txtTimeCurrent.Text = String.Format("{0:HHmm}", System.DateTime.Now);
         }
     }
 }
