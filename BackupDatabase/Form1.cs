@@ -79,7 +79,6 @@ namespace BackupDatabase
                 txtTimeEnd.Text = String.Format("{0:HHmm}", System.DateTime.Now);
             }
         }
-        
 
         private void btnStart_Click(object sender, EventArgs e)
         {
