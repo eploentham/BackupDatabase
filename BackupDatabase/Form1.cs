@@ -19,6 +19,7 @@ namespace BackupDatabase
         Timer timer1;
         IniFile iniF;
         InitConfig iniC;
+        LogFile lg;
 
         public Form1()
         {
@@ -40,6 +41,7 @@ namespace BackupDatabase
             }
             iniF = new IniFile(appName);
             iniC = new InitConfig();
+            lg = new LogFile();
 
             iniC.hostDB1 = iniF.Read("hostDB1");
             iniC.nameDB1 = iniF.Read("nameDB1");
@@ -161,7 +163,6 @@ namespace BackupDatabase
                     // of problems otherwise.  Its exception safe as well which is great.
                     using (ZipOutputStream s = new ZipOutputStream(File.Create(filezip)))
                     {
-
                         s.SetLevel(9); // 0 - store only to 9 - means best compression
 
                         byte[] buffer = new byte[4096];
