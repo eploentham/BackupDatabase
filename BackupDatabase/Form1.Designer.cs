@@ -40,6 +40,10 @@
             this.chkBackup1 = new System.Windows.Forms.CheckBox();
             this.chkBackup2 = new System.Windows.Forms.CheckBox();
             this.chkBackup3 = new System.Windows.Forms.CheckBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.chkTest1 = new System.Windows.Forms.RadioButton();
+            this.chkTest2 = new System.Windows.Forms.RadioButton();
+            this.chkTest3 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label9
@@ -163,11 +167,59 @@
             this.chkBackup3.Text = "Backup Database3";
             this.chkBackup3.UseVisualStyleBackColor = true;
             // 
+            // btnTest
+            // 
+            this.btnTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnTest.Location = new System.Drawing.Point(96, 133);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(205, 46);
+            this.btnTest.TabIndex = 19;
+            this.btnTest.Text = "Test Connection";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // chkTest1
+            // 
+            this.chkTest1.AutoSize = true;
+            this.chkTest1.Location = new System.Drawing.Point(24, 185);
+            this.chkTest1.Name = "chkTest1";
+            this.chkTest1.Size = new System.Drawing.Size(117, 17);
+            this.chkTest1.TabIndex = 20;
+            this.chkTest1.TabStop = true;
+            this.chkTest1.Text = "Backup Database1";
+            this.chkTest1.UseVisualStyleBackColor = true;
+            // 
+            // chkTest2
+            // 
+            this.chkTest2.AutoSize = true;
+            this.chkTest2.Location = new System.Drawing.Point(149, 185);
+            this.chkTest2.Name = "chkTest2";
+            this.chkTest2.Size = new System.Drawing.Size(117, 17);
+            this.chkTest2.TabIndex = 21;
+            this.chkTest2.TabStop = true;
+            this.chkTest2.Text = "Backup Database2";
+            this.chkTest2.UseVisualStyleBackColor = true;
+            // 
+            // chkTest3
+            // 
+            this.chkTest3.AutoSize = true;
+            this.chkTest3.Location = new System.Drawing.Point(284, 185);
+            this.chkTest3.Name = "chkTest3";
+            this.chkTest3.Size = new System.Drawing.Size(117, 17);
+            this.chkTest3.TabIndex = 22;
+            this.chkTest3.TabStop = true;
+            this.chkTest3.Text = "Backup Database3";
+            this.chkTest3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 220);
+            this.Controls.Add(this.chkTest3);
+            this.Controls.Add(this.chkTest2);
+            this.Controls.Add(this.chkTest1);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.chkBackup3);
             this.Controls.Add(this.chkBackup2);
             this.Controls.Add(this.chkBackup1);
@@ -203,6 +255,10 @@
         private System.Windows.Forms.CheckBox chkBackup1;
         private System.Windows.Forms.CheckBox chkBackup2;
         private System.Windows.Forms.CheckBox chkBackup3;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.RadioButton chkTest1;
+        private System.Windows.Forms.RadioButton chkTest2;
+        private System.Windows.Forms.RadioButton chkTest3;
     }
 }
 

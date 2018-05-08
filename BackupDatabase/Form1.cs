@@ -41,7 +41,6 @@ namespace BackupDatabase
             }
             iniF = new IniFile(appName);
             iniC = new InitConfig();
-            lg = new LogFile();
 
             iniC.hostDB1 = iniF.Read("hostDB1");
             iniC.nameDB1 = iniF.Read("nameDB1");
@@ -70,7 +69,7 @@ namespace BackupDatabase
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
             timer1.Interval = 1000 * 60;
             timer1.Start();
-            this.Text = "Last Update 2018-05-07";
+            this.Text = "Last Update 2018-05-08 test connection & log file";
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -209,7 +208,7 @@ namespace BackupDatabase
                 catch (Exception ex)
                 {
                     Console.WriteLine("Exception during processing {0}", ex);
-
+                    lg = new LogFile(ex.Message);
                     // No need to rethrow the exception as for our purposes its handled.
                 }
             }
@@ -308,7 +307,7 @@ namespace BackupDatabase
                 catch (Exception ex)
                 {
                     Console.WriteLine("Exception during processing {0}", ex);
-
+                    lg = new LogFile(ex.Message);
                     // No need to rethrow the exception as for our purposes its handled.
                 }
             }
@@ -326,6 +325,85 @@ namespace BackupDatabase
         private void Form1_Load(object sender, EventArgs e)
         {
             txtTimeCurrent.Text = String.Format("{0:HHmm}", System.DateTime.Now);
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            if (chkTest1.Checked)
+            {
+                string constring = "server=" + iniC.hostDB1 + ";user=" + iniC.userDB1 + ";pwd=" + iniC.passDB1 + ";database=" + iniC.nameDB1 + ";port=" + iniC.portDB1 + ";";
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(constring))
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            
+                            conn.Close();
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK ");
+                            MessageBox.Show("open Conect OK " , "");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss")+"|1|" +"|"+ constring +" "+ ex.Message + " " + ex.InnerException);
+                    MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
+                }
+                //catch(MySql)
+            }
+            if (chkTest2.Checked)
+            {
+                string constring = "server=" + iniC.hostDB2 + ";user=" + iniC.userDB2 + ";pwd=" + iniC.passDB2 + ";database=" + iniC.nameDB2 + ";port=" + iniC.portDB2 + ";";
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(constring))
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+
+                            conn.Close();
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK " );
+                            MessageBox.Show("open Conect OK ", "");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + "|" + constring + " " + ex.Message + " " + ex.InnerException);
+                    MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
+                }
+                //catch(MySql)
+            }
+            if (chkTest3.Checked)
+            {
+                string constring = "server=" + iniC.hostDB3 + ";user=" + iniC.userDB3 + ";pwd=" + iniC.passDB3 + ";database=" + iniC.nameDB3 + ";port=" + iniC.portDB3 + ";";
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(constring))
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+
+                            conn.Close();
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK ");
+                            MessageBox.Show("open Conect OK ", "");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + "|" + constring + " " + ex.Message + " " + ex.InnerException);
+                    MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
+                }
+                //catch(MySql)
+            }
         }
     }
 }
