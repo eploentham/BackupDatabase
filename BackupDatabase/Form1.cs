@@ -69,7 +69,8 @@ namespace BackupDatabase
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
             timer1.Interval = 1000 * 60;
             timer1.Start();
-            this.Text = "Last Update 2018-05-08 test connection & log file";
+            //this.Text = "Last Update 2018-05-08 test connection & log file";
+            this.Text = "Last Update 2018-05-09 Error to log";
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -124,7 +125,7 @@ namespace BackupDatabase
         {
             string constring = "server=" + host + ";user=" + user + ";pwd=" + pass + ";database=" + name + ";port=" + port + ";";
             string file = iniC.pathBackupDatabase;
-
+            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "backupDatabase" + host);
             if (file.Equals(""))
             {
                 MessageBox.Show("ไม่พบ Path Backup", "");
@@ -139,15 +140,23 @@ namespace BackupDatabase
                 file = file + "\\" + name + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".sql";
                 using (MySqlConnection conn = new MySqlConnection(constring))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    try
                     {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.Connection = conn;
-                            conn.Open();
-                            mb.ExportToFile(file);
-                            conn.Close();
+                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "backupDatabase" + host + " open connection OK" );
+                                mb.ExportToFile(file);
+                                conn.Close();
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "backupDatabase" + host+"|"+ex.Message+" "+ex.InnerException);
                     }
                 }
 
@@ -342,14 +351,14 @@ namespace BackupDatabase
                             conn.Open();
                             
                             conn.Close();
-                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK ");
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + constring + "Test connect open connection OK ");
                             MessageBox.Show("open Conect OK " , "");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss")+"|1|" +"|"+ constring +" "+ ex.Message + " " + ex.InnerException);
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss")+"|1|" + constring +" "+ ex.Message + " " + ex.InnerException);
                     MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
                 }
                 //catch(MySql)
@@ -367,14 +376,14 @@ namespace BackupDatabase
                             conn.Open();
 
                             conn.Close();
-                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK " );
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + constring + "Test connect open connection OK ");
                             MessageBox.Show("open Conect OK ", "");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + "|" + constring + " " + ex.Message + " " + ex.InnerException);
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + constring + " " + ex.Message + " " + ex.InnerException);
                     MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
                 }
                 //catch(MySql)
@@ -392,14 +401,14 @@ namespace BackupDatabase
                             conn.Open();
 
                             conn.Close();
-                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + "|" + constring + " open connection OK ");
+                            lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|5|" + constring + "Test connect open connection OK ");
                             MessageBox.Show("open Conect OK ", "");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + "|" + constring + " " + ex.Message + " " + ex.InnerException);
+                    lg = new LogFile(DateTime.Now.ToString("yyyyMMdd hh:mm:ss") + "|1|" + constring + " " + ex.Message + " " + ex.InnerException);
                     MessageBox.Show("ไม่สามารถ Conect " + ex.Message + " " + ex.InnerException, "");
                 }
                 //catch(MySql)
